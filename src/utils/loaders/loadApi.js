@@ -3,7 +3,6 @@ import {apiConfig} from '../../configs';
 
 let loadPromise;
 
-const enabledAPIParams = ['lang', 'apikey', 'coordorder', 'load', 'mode'];
 const successCallbackName = '_$_api_success';
 const errorCallbackName = '_$_api_error';
 
@@ -12,7 +11,7 @@ const defaultOptions = {
     coordorder: 'latlong',
     load: 'package.full',
     mode: 'release',
-    ns: '',
+    namespace: '',
     onload: successCallbackName,
     onerror: errorCallbackName
 };
@@ -20,7 +19,6 @@ const defaultOptions = {
 function generateURL (options) {
     const params = Object.assign({}, defaultOptions);
     Object.keys(options)
-        .filter((key) => enabledAPIParams.indexOf(key) !== -1)
         .forEach((key) => {
             params[key] = options[key];
         });
